@@ -47,6 +47,7 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(getItems())
         );
+
     }
 
 
@@ -80,5 +81,18 @@ public class SecondActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View view) {
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mCompositeDisposable.clear();
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCompositeDisposable.clear();
     }
 }
